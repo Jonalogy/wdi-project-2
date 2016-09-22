@@ -1,0 +1,60 @@
+<%- contentFor('script') %>
+<script src="/viewProducts.js"></script>
+<%- contentFor('body') %>
+  <div class="row firstrow">
+    <div class="col-lg-4 col-sm-12 col-xs-12">
+      <div class="card card-outline-secondary text-xs-center" id="productPictureBlock">
+        <div class="card-block">
+          <p class="card-text" id="productPicture"><img src="<%= productPictures[0].url %>" /></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-sm-12 col-xs-12">
+      <div class="card card-outline-secondary transparent text-left" id="productDescriptionBlock">
+        <div class="card-block">
+          <h4 class="card-title"><%= brandName %> <%= productName %></h4>
+          <form>
+            <div class="form-group">
+              <label for="variant">Variants</label>
+              <select class="form-control transparent" id="variant">
+                <% for(var i=0; i<variants.length; i++) { %>
+                <option><%= variants[i].variantName %> - <%= variants[i].size %> - S$<%= Math.round(variants[i].sellingPrice * 100) / 100 %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="col-lg-2 col-sm-3 col-xs-6" style="padding-left:0">
+
+
+              <select class="form-control transparent" id="variant">
+                <% for(var i=0; i<=variants[0].stock; i++) { %>
+                <option><%= i %></option>
+                <% } %>
+              </select>
+            </div>
+            <button type="button" class="btn btn-success">Add to Cart</button>
+          </form>
+
+        </div>
+        <div class="card-block">
+          <a href="/product/<%= brandName %>" class="card-link"><< View other <%= brandName %> products</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="card card-block">
+        <h4 class="card-title">Product Description</h4>
+        <p class="card-text" id="productDescription"><%- productDescription %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="card card-block">
+        <h4 class="card-title">Marketing Illustrations</h4>
+        <p class="card-text">Marketing photos here</p>
+      </div>
+    </div>
+  </div>
+</div>

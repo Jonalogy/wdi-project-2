@@ -1,0 +1,17 @@
+<%- contentFor('script') %>
+<script src="/viewProducts.js"></script>
+<%- contentFor('body') %>
+
+<div class="row firstrow">
+<% for(var i=0; i<products.length; i++) {%>
+  <div class="col-lg-3 col-sm-6 col-xs-12 productCard">
+    <div class="card-block products">
+      <% var url="/product/"+products[i].brand.brandName.replace(/ /g,'-')+"/"+products[i].productName.replace(/ /g,'-') %>
+      <a href= <%= url %> >
+        <p class="card-text" id="productPicture"><img src="<%= products[i].productpictures[0].url %>" /></p>
+        <h6 class="card-title text-center"><small><%= products[i].brand.brandName %><br><%= products[i].productName %></small></h6>
+      </a>
+    </div>
+  </div>
+<% } %>
+</div>

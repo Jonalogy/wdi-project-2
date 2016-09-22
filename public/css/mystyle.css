@@ -1,0 +1,98 @@
+.form-control-feedback {
+  display: inline-block;
+  padding: 0px 5px;
+  line-height: 0.7em;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.navbar {
+  border-radius: 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.navbar-brand {
+  display: block;
+  width: 130px;
+}
+
+.navbar-brand-mask {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  background: url("/images/BrandNameMask.png");
+  display: block;
+  width: 130px;
+  height: 50px;
+  z-index:2;
+}
+
+#granim-canvas {
+    position: absolute;
+    display: block;
+    width: 130px;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index:1;
+}
+/*
+#background-canvas {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index:0;
+}*/
+
+.firstrow {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.card-title {
+  padding-bottom: 15px;
+}
+
+/*.row.match-my-cols {
+    overflow: hidden;
+}
+
+.match-my-cols [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}*/
+
+#productPicture img {
+  width: 100%;
+}
+
+#svgEdit .pencil{
+  fill: #413D3D;
+}
+
+#svgEdit .paper{
+  fill: #515151;
+}

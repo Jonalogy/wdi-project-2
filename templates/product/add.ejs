@@ -1,0 +1,107 @@
+<%- contentFor('script') %>
+<script src="/productLogic.js"></script>
+<%- contentFor('body') %>
+<h4 class="text-center firstrow">
+  <%if(typeof edit != 'undefined'){%>Edit Product<%}else{%>Add A New Product<%}%>
+</h4>
+<%if(typeof edit != 'undefined'){%>
+<form id="editProductForm" enctype="multipart/form-data" method="POST" action="/admin/edit">
+<%}else{%>
+<form id="addProductForm" enctype="multipart/form-data" method="POST" action="/admin/add">
+<%}%>
+  <div class="form-group row" id="brandSection">
+    <!-- //BRAND SECTION////////////////////////////// -->
+    <label for="brandName" class="col-sm-3 col-form-label-sm">Brand Name</label>
+    <div class="col-sm-3">
+      <select class="form-control form-control-sm" name="brandName" id="brandName">
+        <option value="">Select a brand</option>
+        <% for(var i=0; i<brands.length; i++) { %>
+        <option value="<%= brands[i].brandName %>" <% if(typeof edit != 'undefined' && brandName==brands[i].brandName) { %> selected <%}%> ><%= brands[i].brandName %></option>
+        <% } %>
+        <option value="newbrand">Enter a new brand</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="brandCountry" class="col-sm-3 col-form-label-sm">Brand Country</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" name="brandCountry" id="brandCountry" placeholder="e.g. Korea" <%if(typeof edit != 'undefined'){%>value='<%=brand.brandCountry%>'<%}%>>
+    </div>
+  </div>
+  <!-- //PRODUCT GROUP SECTION////////////////////////////// -->
+  <div class="form-group row">
+    <label for="productName" class="col-sm-3 col-form-label-sm">Product Name</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" name="productName" id="productName" placeholder="e.g. Water Sleeping Mask" <%if(typeof edit != 'undefined'){%>value='<%=productName%>'<%}%>>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="productDescription" class="col-sm-3 col-form-label-sm">Product Description</label>
+    <div class="col-sm-9">
+      <textarea class="form-control form-control-sm" name="productDescription" id="productDescription" placeholder="e.g. What is it, how to use" ><%if(typeof edit != 'undefined'){%><%=productDescription%><%}%></textarea>
+      <script>
+          CKEDITOR.replace('productDescription');
+      </script>
+    </div>
+  </div>
+  <!-- //VARIANT SECTION////////////////////////////// -->
+  <div class="form-group row">
+    <label for="variantName" class="col-sm-3 col-form-label-sm">Variant Name</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" name="variantName" id="variantName" placeholder="e.g. Refill #21 Natural Beige" <%if(typeof edit != 'undefined'){%>value='<%=variantName%>'<%}%>>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="size" class="col-sm-3 col-form-label-sm">Size</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" name="size" id="size" placeholder="e.g. 150ml" <%if(typeof edit != 'undefined'){%>value='<%=variant.size%>'<%}%>>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="sellingPrice" class="col-sm-3 col-form-label-sm">Selling Price</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control form-control-sm" name="sellingPrice" id="sellingPrice" placeholder="our selling price" <%if(typeof edit != 'undefined'){%>value='<%=Math.round(variant.sellingPrice * 100)/100%>'<%}%>>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="brandCountryRetailPrice" class="col-sm-3 col-form-label-sm">Retail Price in Brand Country</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control form-control-sm" name="brandCountryRetailPrice" id="brandCountryRetailPrice" placeholder="in local currency of brand country" <%if(typeof edit != 'undefined'){%>value='<%=Math.round(variant.brandCountryRetailPrice * 100)/100%>'<%}%>>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="singaporeRetailPrice" class="col-sm-3 col-form-label-sm">Singapore Retail Price</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control form-control-sm" name="singaporeRetailPrice" id="singaporeRetailPrice" placeholder="in S$" <%if(typeof edit != 'undefined'){%>value='<%=Math.round(variant.singaporeRetailPrice * 100)/100%>'<%}%>>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="weight" class="col-sm-3 col-form-label-sm">Weight</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control form-control-sm" name="weight" id="weight" placeholder="in grams" <%if(typeof edit != 'undefined'){%>value='<%=variant.weight%>'<%}%>>
+      <input type="hidden" name="stock" id="stock" value="0">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="saleAvailability" class="col-sm-3 col-form-label-sm">Sale Availability</label>
+    <div class="col-sm-9">
+      <select class="form-control form-control-sm" name="saleAvailability" id="saleAvailability">
+        <option value="0" <%if(typeof edit != 'undefined' && variant.saleAvailability==0){%>selected<%}%> >Not For Sale</option>
+        <option value="1" <%if(typeof edit != 'undefined' && variant.saleAvailability==1){%>selected<%}%> >For Sale</option>
+      </select>
+    </div>
+  </div>
+  <%if(typeof edit != 'undefined'){%><%}else{%>
+  <div class="form-group row">
+    <label for="picture" class="col-sm-3 col-form-label-sm">Product Pictures</label>
+    <div class="col-sm-9">
+        <input type="file" name="myFile" class="form-control form-control-sm">
+    </div>
+  </div>
+  <%}%>
+  <%if(typeof edit != 'undefined'){%>
+  <button type="button" class="btn btn-default" id="editProduct" value="submit">Update</button>
+  <%}else{%>
+  <button type="button" class="btn btn-default" id="addProduct" value="submit">Add Product</button>
+  <%}%>
+</form>
