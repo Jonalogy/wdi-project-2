@@ -5,6 +5,7 @@
 - Admin & super users are able to add/edit products.
 - Admin & super users are able to update inventory.
 - Adding products:
+
 ##### Background
     - Products belong to different brands.
     - Each brand can have many products.
