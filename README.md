@@ -9,6 +9,7 @@
 - Products belong to different brands.
 - Each brand can have many products.
 - Each product can have many variants.
+
 ##### Requirements
 1. Create new brand only if brand does not exist.
 2. Create new product only if product does not exist.
