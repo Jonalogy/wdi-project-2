@@ -3,7 +3,7 @@ $('document').ready(function(){
   $('#addProductForm').on('focusout', 'textarea', checkFilled);
   $('#addProductForm').on('change', 'select', checkFilled);
   $('#addProductForm').on('click', '#addProduct', addProduct);
-  //GET DATA FOR AUTOCOMPLETE OF PRODUCT NAME
+  //GET DATA FOR AUTOCOMPLETE OF PRODUCT NAME//////////////////
   $('#productName').on('focusin', function(){
     var brandName = $('#brandName').val().replace(/ /g,'-');
     var url = "/product/autocomplete/" + brandName + "/productName";
